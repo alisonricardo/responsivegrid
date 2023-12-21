@@ -1,0 +1,80 @@
+/* Cores para o layout padrão */
+.layout > .header {
+  background-color: lightblue;
+  grid-area: header;
+}
+.layout > .sidebar {
+  background-color: lightgreen;
+  grid-area: sidebar;
+}
+.layout > .main {
+  background-color: lightcoral;
+  grid-area: main;
+}
+.layout > .widget {
+  background-color: lightyellow;
+  grid-area: widget;
+}
+.layout > .statistics {
+  background-color: lightgrey;
+  grid-area: statistics;
+}
+.layout > .footer {
+  background-color: lightpink;
+  grid-area: footer;
+}
+
+/* Media query para notebooks */
+@media (min-width: 1140px) {
+
+  .layout {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 200px auto; /* Largura fixa para sidebar e restante para o conteúdo */
+    grid-template-areas:
+      "header header header"
+      "sidebar main main"
+      "sidebar widget statistics"
+      "footer footer footer";
+    height: 100vh;
+  }
+
+}
+
+
+/* Media query para celulares */
+@media (min-width: 380px) and (max-width: 1139px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Coluna única para telas menores */
+    grid-template-areas:
+      "header"
+      "main"
+      "widget"
+      "statistics"
+      "footer";
+    height: 100vh;
+  }
+
+  .layout > .sidebar {
+    display: none;
+  } /* Sidebar oculto em telas de celulares */
+
+  /* As cores permanecem as mesmas da definição anterior */
+  /* Ajuste necessário para elementos que agora ocupam uma coluna única */
+  .layout > .header {
+    grid-area: header;
+  }
+  .layout > .main {
+    grid-area: main;
+  }
+  .layout > .widget {
+    grid-area: widget;
+  }
+  .layout > .statistics {
+    grid-area: statistics;
+  }
+  .layout > .footer {
+    grid-area: footer;
+  }
+}
